@@ -1,8 +1,9 @@
 {
   "name": "imovies-server",
   "version": "1.0.0",
-  "description": "Backend API for IMovies - Movie ticket booking platform",
+  "description": "Backend API for iMovies LUXE - Next-Gen Cinema Reservation Platform",
   "main": "src/server.js",
+  "author": "Chelsi Ratnawat",
   "type": "module",
   "scripts": {
     "start": "node src/server.js",
