@@ -1,31 +1,45 @@
 @import "bootstrap/dist/css/bootstrap.min.css";
 
-:root {
-  --font-heading: 'Outfit', -apple-system, BlinkMacSystemFont, sans-serif;
-  --font-body: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
-  
-  --bg-main: #07090e;
-  --bg-card: rgba(18, 22, 36, 0.75);
-  --bg-card-hover: rgba(28, 35, 58, 0.85);
-  --bg-surface: #0e1220;
-  --border-glass: rgba(255, 255, 255, 0.08);
-  --border-glass-active: rgba(229, 9, 20, 0.4);
+/* ==========================================================================
+   CINELUXE / IMOVIES LUXE DESIGN SYSTEM
+   Modern Cyber-Luxe Cinema Aesthetic (Amber Gold, Cyber Cyan & Deep Obsidian)
+   ========================================================================== */
 
-  --primary-red: #e50914;
-  --primary-red-glow: rgba(229, 9, 20, 0.35);
-  --accent-gold: #fbbf24;
+:root {
+  --font-heading: 'Space Grotesk', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-body: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+
+  /* Theme Colors */
+  --bg-main: #080c16;
+  --bg-surface: #0e1526;
+  --bg-surface-elevated: #151f36;
+  --bg-card: rgba(15, 23, 42, 0.72);
+  --bg-card-hover: rgba(26, 38, 68, 0.85);
+  --border-glass: rgba(255, 255, 255, 0.09);
+  --border-glass-light: rgba(255, 255, 255, 0.16);
+
+  /* Brand Accents */
+  --accent-amber: #f59e0b;
+  --accent-amber-light: #fbbf24;
+  --accent-amber-glow: rgba(245, 158, 11, 0.4);
   --accent-cyan: #06b6d4;
+  --accent-cyan-glow: rgba(6, 182, 212, 0.35);
+  --accent-emerald: #10b981;
   --accent-purple: #8b5cf6;
-  
+  --accent-purple-glow: rgba(139, 92, 246, 0.35);
+  --accent-rose: #f43f5e;
+
+  /* Text Hierarchy */
   --text-main: #f8fafc;
   --text-muted: #94a3b8;
   --text-dim: #64748b;
 
+  /* Cinema Seat Tokens */
   --seat-silver: #94a3b8;
-  --seat-gold: #fbbf24;
-  --seat-vip: #a855f7;
-  --seat-selected: #e50914;
-  --seat-booked: #334155;
+  --seat-gold: #f59e0b;
+  --seat-vip: #8b5cf6;
+  --seat-selected: #f59e0b;
+  --seat-booked: #1e293b;
 }
 
 body {
@@ -36,81 +50,70 @@ body {
   min-height: 100vh;
   overflow-x: hidden;
   background-image: 
-    radial-gradient(circle at 15% 10%, rgba(229, 9, 20, 0.08) 0%, transparent 40%),
-    radial-gradient(circle at 85% 30%, rgba(139, 92, 246, 0.08) 0%, transparent 40%),
-    radial-gradient(circle at 50% 90%, rgba(6, 182, 212, 0.05) 0%, transparent 50%);
+    radial-gradient(circle at 10% 5%, rgba(245, 158, 11, 0.08) 0%, transparent 40%),
+    radial-gradient(circle at 85% 15%, rgba(6, 182, 212, 0.09) 0%, transparent 45%),
+    radial-gradient(circle at 50% 50%, rgba(139, 92, 246, 0.05) 0%, transparent 60%),
+    radial-gradient(circle at 80% 90%, rgba(16, 185, 129, 0.05) 0%, transparent 50%);
   background-attachment: fixed;
 }
 
-h1, h2, h3, h4, h5, h6, .navbar-brand {
+h1, h2, h3, h4, h5, h6, .brand-font {
   font-family: var(--font-heading);
   letter-spacing: -0.02em;
   font-weight: 700;
 }
 
-/* Glassmorphism Classes */
+/* ==========================================================================
+   GLASSMORPHISM & SURFACES
+   ========================================================================== */
+
 .glass-panel {
   background: var(--bg-card);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
   border: 1px solid var(--border-glass);
-  border-radius: 16px;
-  box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.5);
+  border-radius: 20px;
+  box-shadow: 0 16px 40px -10px rgba(0, 0, 0, 0.6);
   transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .glass-panel:hover {
-  border-color: rgba(255, 255, 255, 0.15);
+  border-color: var(--border-glass-light);
+}
+
+.glass-panel-elevated {
+  background: linear-gradient(135deg, rgba(21, 31, 54, 0.75) 0%, rgba(14, 21, 38, 0.85) 100%);
+  backdrop-filter: blur(24px);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 24px;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.1);
 }
 
 .glass-nav {
-  background: rgba(7, 9, 14, 0.85);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
+  background: rgba(8, 12, 22, 0.85);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
   border-bottom: 1px solid var(--border-glass);
   position: sticky;
   top: 0;
   z-index: 1000;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
 }
 
-/* Hero Carousel */
-.hero-backdrop {
-  position: relative;
-  min-height: 520px;
-  border-radius: 24px;
-  overflow: hidden;
-  display: flex;
-  align-items: flex-end;
-  background-size: cover;
-  background-position: center 25%;
-  border: 1px solid var(--border-glass);
-  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.8);
-}
+/* ==========================================================================
+   BUTTONS & BADGES
+   ========================================================================== */
 
-.hero-backdrop::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(180deg, rgba(7, 9, 14, 0.1) 0%, rgba(7, 9, 14, 0.85) 70%, #07090e 100%),
-              linear-gradient(90deg, rgba(7, 9, 14, 0.9) 0%, rgba(7, 9, 14, 0.3) 60%, transparent 100%);
-}
-
-.hero-content {
-  position: relative;
-  z-index: 2;
-  padding: 40px;
-  max-width: 700px;
-}
-
-/* Buttons */
 .btn-cinema {
-  background: linear-gradient(135deg, #e50914 0%, #b80610 100%);
-  color: #fff;
-  font-weight: 600;
+  background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
+  color: #080c14;
+  font-weight: 700;
+  font-family: var(--font-heading);
+  letter-spacing: 0.02em;
   border: none;
   padding: 10px 24px;
-  border-radius: 12px;
-  box-shadow: 0 4px 15px var(--primary-red-glow);
+  border-radius: 14px;
+  box-shadow: 0 4px 20px var(--accent-amber-glow);
   transition: all 0.25s ease;
   display: inline-flex;
   align-items: center;
@@ -118,221 +121,335 @@ h1, h2, h3, h4, h5, h6, .navbar-brand {
 }
 
 .btn-cinema:hover {
-  background: linear-gradient(135deg, #ff1a26 0%, #cc0812 100%);
+  background: linear-gradient(135deg, #fbbf24 0%, #f59e0b 100%);
+  color: #000;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 30px rgba(245, 158, 11, 0.6);
+}
+
+.btn-cinema-cyan {
+  background: linear-gradient(135deg, #06b6d4 0%, #0284c7 100%);
+  color: #fff;
+  font-weight: 700;
+  font-family: var(--font-heading);
+  border: none;
+  padding: 10px 24px;
+  border-radius: 14px;
+  box-shadow: 0 4px 20px var(--accent-cyan-glow);
+  transition: all 0.25s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.btn-cinema-cyan:hover {
+  background: linear-gradient(135deg, #22d3ee 0%, #06b6d4 100%);
   color: #fff;
   transform: translateY(-2px);
-  box-shadow: 0 8px 25px rgba(229, 9, 20, 0.5);
+  box-shadow: 0 8px 30px rgba(6, 182, 212, 0.55);
 }
 
 .btn-glass {
-  background: rgba(255, 255, 255, 0.08);
+  background: rgba(255, 255, 255, 0.06);
   color: var(--text-main);
-  border: 1px solid var(--border-glass);
-  backdrop-filter: blur(8px);
-  border-radius: 12px;
-  padding: 10px 20px;
-  font-weight: 500;
-  transition: all 0.2s ease;
+  border: 1px solid var(--border-glass-light);
+  backdrop-filter: blur(12px);
+  border-radius: 14px;
+  padding: 10px 22px;
+  font-weight: 600;
+  font-family: var(--font-heading);
+  letter-spacing: 0.02em;
+  transition: all 0.25s ease;
   display: inline-flex;
   align-items: center;
   gap: 8px;
 }
 
 .btn-glass:hover {
-  background: rgba(255, 255, 255, 0.16);
+  background: rgba(255, 255, 255, 0.14);
   color: #fff;
   border-color: rgba(255, 255, 255, 0.3);
   transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
 }
 
-/* Movie Card */
+.badge-rating {
+  background: rgba(245, 158, 11, 0.16);
+  color: #fbbf24;
+  border: 1px solid rgba(245, 158, 11, 0.4);
+  font-weight: 700;
+  font-family: var(--font-heading);
+  padding: 4px 10px;
+  border-radius: 10px;
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  backdrop-filter: blur(8px);
+}
+
+.badge-format {
+  background: rgba(6, 182, 212, 0.15);
+  color: #22d3ee;
+  border: 1px solid rgba(6, 182, 212, 0.35);
+  font-weight: 700;
+  padding: 3px 8px;
+  border-radius: 8px;
+  font-size: 0.72rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+/* ==========================================================================
+   HERO PREMIERE CAROUSEL
+   ========================================================================== */
+
+.hero-backdrop {
+  position: relative;
+  min-height: 540px;
+  border-radius: 28px;
+  overflow: hidden;
+  display: flex;
+  align-items: flex-end;
+  background-size: cover;
+  background-position: center 25%;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.85);
+}
+
+.hero-backdrop::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: 
+    linear-gradient(180deg, rgba(8, 12, 22, 0.15) 0%, rgba(8, 12, 22, 0.85) 65%, #080c16 100%),
+    linear-gradient(90deg, rgba(8, 12, 22, 0.95) 0%, rgba(8, 12, 22, 0.6) 55%, transparent 100%);
+}
+
+.hero-content {
+  position: relative;
+  z-index: 2;
+  padding: 48px;
+  max-width: 720px;
+}
+
+/* ==========================================================================
+   MOVIE CARDS
+   ========================================================================== */
+
 .movie-card {
   position: relative;
-  border-radius: 16px;
+  border-radius: 20px;
   overflow: hidden;
   background: var(--bg-surface);
   border: 1px solid var(--border-glass);
-  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
   cursor: pointer;
   display: flex;
   flex-direction: column;
   height: 100%;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
 }
 
 .movie-card:hover {
   transform: translateY(-8px);
-  border-color: rgba(229, 9, 20, 0.5);
-  box-shadow: 0 16px 32px rgba(0, 0, 0, 0.6), 0 0 20px var(--primary-red-glow);
+  border-color: rgba(245, 158, 11, 0.45);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.7), 0 0 25px rgba(245, 158, 11, 0.2);
 }
 
 .movie-poster-wrap {
   position: relative;
   aspect-ratio: 2/3;
   overflow: hidden;
-  background: #111524;
+  background: #0f172a;
 }
 
 .movie-poster-wrap img {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  transition: transform 0.5s ease;
+  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .movie-card:hover .movie-poster-wrap img {
-  transform: scale(1.06);
+  transform: scale(1.08);
 }
 
 .movie-card-overlay {
   position: absolute;
   inset: 0;
-  background: linear-gradient(180deg, transparent 40%, rgba(7, 9, 14, 0.95) 100%);
+  background: linear-gradient(180deg, transparent 40%, rgba(8, 12, 22, 0.96) 100%);
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
-  padding: 16px;
+  padding: 18px;
 }
 
-.badge-rating {
-  background: rgba(251, 191, 36, 0.18);
-  color: #fbbf24;
-  border: 1px solid rgba(251, 191, 36, 0.35);
-  font-weight: 700;
-  padding: 4px 10px;
-  border-radius: 8px;
-  display: inline-flex;
-  align-items: center;
-  gap: 4px;
-}
+/* ==========================================================================
+   CINEMA SCREEN & SPOTLIGHT PROJECTION
+   ========================================================================== */
 
-/* Cinema Screen Graphic */
 .cinema-screen-container {
-  perspective: 450px;
-  margin: 30px auto 40px auto;
+  perspective: 500px;
+  margin: 24px auto 36px auto;
   text-align: center;
+  position: relative;
 }
 
 .cinema-screen-curve {
-  width: 80%;
-  max-width: 600px;
-  height: 24px;
+  width: 82%;
+  max-width: 620px;
+  height: 16px;
   margin: 0 auto;
-  background: linear-gradient(180deg, #ffffff 0%, rgba(255, 255, 255, 0.3) 60%, transparent 100%);
+  background: linear-gradient(180deg, #ffffff 0%, rgba(245, 158, 11, 0.6) 50%, rgba(6, 182, 212, 0.2) 100%);
   border-radius: 50% 50% 0 0 / 100% 100% 0 0;
-  box-shadow: 0 10px 40px rgba(255, 255, 255, 0.5), 0 0 60px rgba(6, 182, 212, 0.4);
+  box-shadow: 
+    0 4px 20px rgba(255, 255, 255, 0.6),
+    0 12px 40px rgba(245, 158, 11, 0.45),
+    0 24px 80px rgba(6, 182, 212, 0.3);
   transform: rotateX(-20deg);
 }
 
+/* Downward light projection beam */
+.cinema-screen-light-beam {
+  width: 75%;
+  max-width: 540px;
+  height: 48px;
+  margin: -4px auto 0 auto;
+  background: linear-gradient(180deg, rgba(245, 158, 11, 0.12) 0%, rgba(6, 182, 212, 0.04) 70%, transparent 100%);
+  clip-path: polygon(10% 0%, 90% 0%, 100% 100%, 0% 100%);
+  pointer-events: none;
+}
+
 .cinema-screen-label {
-  font-size: 0.75rem;
+  font-family: var(--font-heading);
+  font-size: 0.72rem;
   font-weight: 700;
-  letter-spacing: 0.25em;
+  letter-spacing: 0.28em;
   color: var(--text-dim);
-  margin-top: 10px;
+  margin-top: 8px;
   text-transform: uppercase;
 }
 
-/* Interactive Seat Grid */
+/* ==========================================================================
+   SEAT MATRIX & LUXURY RECLINERS
+   ========================================================================== */
+
 .seat-grid {
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 12px;
   align-items: center;
   user-select: none;
+  padding: 10px 0;
 }
 
 .seat-row {
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: 10px;
 }
 
 .seat-row-label {
-  width: 24px;
-  font-weight: 700;
+  width: 26px;
+  font-weight: 800;
+  font-family: var(--font-heading);
   font-size: 0.85rem;
   color: var(--text-dim);
   text-align: center;
 }
 
 .seat-unit {
-  width: 36px;
-  height: 36px;
-  border-radius: 8px 8px 4px 4px;
+  width: 38px;
+  height: 38px;
+  border-radius: 10px 10px 6px 6px;
   display: flex;
   align-items: center;
   justify-content: center;
   font-size: 0.75rem;
-  font-weight: 600;
+  font-weight: 700;
   cursor: pointer;
   transition: all 0.2s cubic-bezier(0.34, 1.56, 0.64, 1);
   position: relative;
 }
 
-/* Tier Colors */
+/* Silver Tier */
 .seat-unit.silver {
-  background: rgba(148, 163, 184, 0.18);
-  border: 1px solid rgba(148, 163, 184, 0.4);
+  background: rgba(148, 163, 184, 0.14);
+  border: 1px solid rgba(148, 163, 184, 0.35);
   color: #cbd5e1;
 }
 
 .seat-unit.silver:hover:not(.booked) {
-  background: rgba(148, 163, 184, 0.35);
+  background: rgba(148, 163, 184, 0.32);
   transform: scale(1.15);
   border-color: #cbd5e1;
 }
 
+/* Gold Tier */
 .seat-unit.gold {
-  background: rgba(251, 191, 36, 0.18);
-  border: 1px solid rgba(251, 191, 36, 0.4);
+  background: rgba(245, 158, 11, 0.16);
+  border: 1px solid rgba(245, 158, 11, 0.45);
   color: #fbbf24;
 }
 
 .seat-unit.gold:hover:not(.booked) {
-  background: rgba(251, 191, 36, 0.35);
+  background: rgba(245, 158, 11, 0.35);
   transform: scale(1.15);
   border-color: #fbbf24;
+  box-shadow: 0 0 14px rgba(245, 158, 11, 0.3);
 }
 
+/* VIP Luxury Recliner Tier */
 .seat-unit.vip {
-  background: rgba(168, 85, 247, 0.18);
-  border: 1px solid rgba(168, 85, 247, 0.45);
-  color: #c084fc;
+  background: rgba(139, 92, 246, 0.18);
+  border: 1px solid rgba(139, 92, 246, 0.48);
+  color: #c4b5fd;
+  border-radius: 12px 12px 8px 8px;
 }
 
 .seat-unit.vip:hover:not(.booked) {
-  background: rgba(168, 85, 247, 0.4);
-  transform: scale(1.15);
-  border-color: #c084fc;
+  background: rgba(139, 92, 246, 0.38);
+  transform: scale(1.16);
+  border-color: #c4b5fd;
+  box-shadow: 0 0 16px rgba(139, 92, 246, 0.4);
 }
 
 /* Selected State */
 .seat-unit.selected {
-  background: linear-gradient(135deg, #e50914 0%, #b80610 100%) !important;
-  color: #fff !important;
-  border-color: #ff4d58 !important;
-  transform: scale(1.18);
-  box-shadow: 0 0 16px rgba(229, 9, 20, 0.7);
-  z-index: 2;
+  background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%) !important;
+  color: #080c16 !important;
+  border-color: #fbbf24 !important;
+  transform: scale(1.2);
+  box-shadow: 0 0 20px rgba(245, 158, 11, 0.75);
+  z-index: 3;
 }
 
 /* Booked State */
 .seat-unit.booked {
-  background: #1e2433 !important;
-  border: 1px solid #2a3449 !important;
-  color: #475569 !important;
+  background: #151d2f !important;
+  border: 1px solid #1e293b !important;
+  color: #334155 !important;
   cursor: not-allowed;
-  opacity: 0.6;
+  opacity: 0.5;
 }
 
-/* Digital Ticket Layout */
+/* ==========================================================================
+   DIGITAL E-TICKET LUXE BOARDING PASS
+   ========================================================================== */
+
 .digital-ticket {
-  background: linear-gradient(135deg, #111626 0%, #0d111d 100%);
-  border-radius: 20px;
+  background: linear-gradient(145deg, #131c30 0%, #0d1424 100%);
+  border-radius: 24px;
   overflow: hidden;
-  border: 1px dashed rgba(255, 255, 255, 0.2);
-  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.7);
+  border: 1px solid rgba(245, 158, 11, 0.35);
+  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.85), 0 0 30px rgba(245, 158, 11, 0.15);
   position: relative;
+}
+
+.digital-ticket-header {
+  background: linear-gradient(90deg, rgba(245, 158, 11, 0.15) 0%, rgba(6, 182, 212, 0.15) 100%);
+  border-bottom: 1px dashed rgba(255, 255, 255, 0.2);
+  padding: 18px 24px;
 }
 
 .ticket-notch-left, .ticket-notch-right {
@@ -341,8 +458,9 @@ h1, h2, h3, h4, h5, h6, .navbar-brand {
   height: 28px;
   background: var(--bg-main);
   border-radius: 50%;
-  top: 68%;
+  top: 70%;
   z-index: 5;
+  box-shadow: inset 0 0 8px rgba(0, 0, 0, 0.7);
 }
 
 .ticket-notch-left {
@@ -354,36 +472,50 @@ h1, h2, h3, h4, h5, h6, .navbar-brand {
 }
 
 .barcode-strip {
-  letter-spacing: 0.35em;
+  letter-spacing: 0.38em;
   font-family: 'Courier New', monospace;
-  font-weight: 700;
-  opacity: 0.8;
+  font-weight: 800;
+  opacity: 0.85;
 }
 
-/* Date Pills */
+/* ==========================================================================
+   DATE PILLS & FILTER CHIPS
+   ========================================================================== */
+
 .date-pill {
-  padding: 10px 18px;
-  border-radius: 12px;
+  padding: 12px 20px;
+  border-radius: 16px;
   border: 1px solid var(--border-glass);
   background: rgba(255, 255, 255, 0.04);
   cursor: pointer;
-  transition: all 0.2s ease;
+  transition: all 0.25s ease;
   text-align: center;
+  min-width: 90px;
 }
 
 .date-pill:hover {
-  background: rgba(255, 255, 255, 0.1);
-  border-color: rgba(255, 255, 255, 0.2);
+  background: rgba(255, 255, 255, 0.09);
+  border-color: rgba(255, 255, 255, 0.25);
+  transform: translateY(-2px);
 }
 
 .date-pill.active {
-  background: linear-gradient(135deg, #e50914 0%, #b80610 100%);
+  background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
   border-color: transparent;
-  color: #fff;
-  box-shadow: 0 4px 15px var(--primary-red-glow);
+  color: #080c16;
+  font-weight: 700;
+  box-shadow: 0 4px 18px var(--accent-amber-glow);
 }
 
-/* Custom Scrollbar */
+.date-pill.active .text-secondary,
+.date-pill.active .text-white-50 {
+  color: #1e293b !important;
+}
+
+/* ==========================================================================
+   SCROLLBAR & UTILITIES
+   ========================================================================== */
+
 ::-webkit-scrollbar {
   width: 8px;
   height: 8px;
@@ -394,10 +526,10 @@ h1, h2, h3, h4, h5, h6, .navbar-brand {
 }
 
 ::-webkit-scrollbar-thumb {
-  background: rgba(255, 255, 255, 0.15);
+  background: rgba(255, 255, 255, 0.16);
   border-radius: 4px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: rgba(255, 255, 255, 0.25);
+  background: rgba(245, 158, 11, 0.4);
 }

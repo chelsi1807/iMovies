@@ -30,25 +30,28 @@ export const TrailerModal = ({ movie, onClose, onBookNow }) => {
     <div 
       className="modal fade show d-block" 
       tabIndex="-1" 
-      style={{ backgroundColor: 'rgba(0, 0, 0, 0.88)', backdropFilter: 'blur(10px)', zIndex: 1060 }}
+      style={{ backgroundColor: 'rgba(4, 7, 13, 0.94)', backdropFilter: 'blur(16px)', zIndex: 1060 }}
       onClick={(e) => {
         if (e.target === e.currentTarget) onClose();
       }}
     >
       <div className="modal-dialog modal-dialog-centered modal-xl">
-        <div className="modal-content bg-dark text-white border border-secondary border-opacity-25 rounded-4 overflow-hidden shadow-2xl">
+        <div className="modal-content bg-dark text-white border border-secondary border-opacity-30 rounded-4 overflow-hidden shadow-2xl">
           {/* Modal Header */}
-          <div className="modal-header border-secondary border-opacity-25 py-3 px-4 d-flex align-items-center justify-content-between">
+          <div className="modal-header border-secondary border-opacity-20 py-3 px-4 d-flex align-items-center justify-content-between bg-black bg-opacity-60">
             <div className="d-flex align-items-center gap-2 overflow-hidden me-2">
-              <div className="bg-danger bg-opacity-25 text-danger rounded-circle p-2 d-flex align-items-center justify-content-center" style={{ width: 36, height: 36 }}>
+              <div 
+                className="rounded-circle p-2 d-flex align-items-center justify-content-center text-dark" 
+                style={{ width: 36, height: 36, background: 'linear-gradient(135deg, #f59e0b 0%, #fbbf24 100%)' }}
+              >
                 <i className="bi bi-play-circle-fill fs-5"></i>
               </div>
               <div>
-                <h5 className="modal-title fw-bold text-white text-truncate mb-0" style={{ maxWidth: '50vw' }}>
-                  {movie.title} <span className="text-white-50 fw-normal small">Official Trailer</span>
+                <h5 className="modal-title fw-bold text-white text-truncate mb-0 brand-font" style={{ maxWidth: '50vw' }}>
+                  {movie.title} <span className="text-warning fw-normal small">Official 4K Trailer</span>
                 </h5>
                 <div className="d-flex align-items-center gap-2 mt-1">
-                  <span className="badge bg-secondary bg-opacity-50 text-white-50" style={{ fontSize: '0.7rem' }}>
+                  <span className="badge-format">
                     {movie.certificate || 'PG-13'}
                   </span>
                   <span className="text-warning small" style={{ fontSize: '0.75rem' }}>
@@ -67,10 +70,10 @@ export const TrailerModal = ({ movie, onClose, onBookNow }) => {
                 href={youtubeWatchUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="btn btn-sm btn-outline-danger d-flex align-items-center gap-1 px-3 rounded-pill"
+                className="btn btn-sm btn-glass d-flex align-items-center gap-1 px-3 rounded-pill text-white"
                 title="Open trailer directly on YouTube in a new tab"
               >
-                <i className="bi bi-youtube"></i>
+                <i className="bi bi-youtube text-danger"></i>
                 <span className="d-none d-sm-inline">Watch on YouTube</span>
                 <i className="bi bi-box-arrow-up-right small"></i>
               </a>
@@ -89,28 +92,28 @@ export const TrailerModal = ({ movie, onClose, onBookNow }) => {
           </div>
 
           {/* Mode Switcher Bar */}
-          <div className="bg-black bg-opacity-60 px-4 py-2 border-bottom border-secondary border-opacity-10 d-flex flex-wrap align-items-center justify-content-between gap-2">
+          <div className="bg-black bg-opacity-70 px-4 py-2 border-bottom border-secondary border-opacity-10 d-flex flex-wrap align-items-center justify-content-between gap-2">
             <div className="d-flex align-items-center gap-2">
-              <span className="text-secondary small fw-semibold">STREAM SOURCE:</span>
+              <span className="text-secondary small fw-semibold brand-font">SOURCE:</span>
               <button
-                className={`btn btn-xs rounded-pill px-3 py-1 ${playerMode === 'youtube' ? 'btn-danger shadow-sm' : 'btn-outline-secondary text-white-50 border-0'}`}
+                className={`btn btn-xs rounded-pill px-3 py-1 ${playerMode === 'youtube' ? 'btn-cinema shadow-sm' : 'btn-glass text-white-50 border-0'}`}
                 style={{ fontSize: '0.78rem' }}
                 onClick={() => setPlayerMode('youtube')}
               >
-                <i className="bi bi-youtube me-1"></i> YouTube Studio Trailer
+                <i className="bi bi-youtube me-1 text-danger"></i> YouTube Studio Trailer
               </button>
               <button
-                className={`btn btn-xs rounded-pill px-3 py-1 ${playerMode === 'direct' ? 'btn-danger shadow-sm' : 'btn-outline-secondary text-white-50 border-0'}`}
+                className={`btn btn-xs rounded-pill px-3 py-1 ${playerMode === 'direct' ? 'btn-cinema shadow-sm' : 'btn-glass text-white-50 border-0'}`}
                 style={{ fontSize: '0.78rem' }}
                 onClick={() => setPlayerMode('direct')}
               >
-                <i className="bi bi-film me-1"></i> Cinema HD Stream (Direct)
+                <i className="bi bi-film me-1 text-warning"></i> Cinema HD Stream (Direct)
               </button>
             </div>
 
             <div className="text-white-50 small d-none d-md-block" style={{ fontSize: '0.75rem' }}>
               <i className="bi bi-shield-check text-success me-1"></i>
-              {playerMode === 'youtube' ? 'Enhanced No-Cookie Privacy Mode' : 'Direct HTML5 High-Def Stream'}
+              {playerMode === 'youtube' ? 'Enhanced No-Cookie Privacy Stream' : 'Direct HTML5 High-Def Stream'}
             </div>
           </div>
 
@@ -139,12 +142,15 @@ export const TrailerModal = ({ movie, onClose, onBookNow }) => {
               )}
             </div>
 
-            {/* Helper notice if YouTube restricts external embedding in user's region */}
+            {/* Helper notice if YouTube restricts external embedding */}
             <div className="p-3 bg-dark bg-opacity-90 border-top border-secondary border-opacity-15">
               <div className="d-flex flex-wrap align-items-center justify-content-between gap-3">
                 <div style={{ maxWidth: 650 }}>
                   <div className="d-flex align-items-center gap-2 mb-1">
-                    <span className="badge bg-danger bg-opacity-20 text-danger border border-danger border-opacity-25">
+                    <span 
+                      className="badge rounded-pill fw-bold"
+                      style={{ background: 'rgba(245, 158, 11, 0.18)', color: '#fbbf24', border: '1px solid rgba(245, 158, 11, 0.35)' }}
+                    >
                       {Array.isArray(movie.genre) ? movie.genre.join(', ') : movie.genre}
                     </span>
                     {movie.tagline && (
@@ -161,7 +167,7 @@ export const TrailerModal = ({ movie, onClose, onBookNow }) => {
                     href={youtubeWatchUrl}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="btn btn-outline-light btn-sm rounded-pill px-3 d-flex align-items-center gap-1"
+                    className="btn btn-glass btn-sm rounded-pill px-3 d-flex align-items-center gap-1"
                   >
                     <i className="bi bi-youtube text-danger"></i> Open Full Video ↗
                   </a>
@@ -172,16 +178,16 @@ export const TrailerModal = ({ movie, onClose, onBookNow }) => {
                       onBookNow(movie);
                     }}
                   >
-                    <i className="bi bi-ticket-perforated-fill me-1"></i> Book Tickets Now
+                    <i className="bi bi-ticket-perforated-fill me-1"></i> Book Luxury Seats
                   </button>
                 </div>
               </div>
 
-              {/* Fallback tip for playback errors */}
+              {/* Fallback tip */}
               <div className="mt-2 pt-2 border-top border-secondary border-opacity-10 d-flex flex-wrap align-items-center justify-content-between text-white-50" style={{ fontSize: '0.74rem' }}>
                 <div>
                   <i className="bi bi-info-circle text-info me-1"></i>
-                  <span>If YouTube shows <em>"Video unavailable"</em> or restricts embedding in your region: click <strong>Watch on YouTube</strong> or switch to <strong>Cinema HD Stream</strong>.</span>
+                  <span>If YouTube shows <em>"Video unavailable"</em>: switch to <strong>Cinema HD Stream</strong> or click <strong>Watch on YouTube</strong>.</span>
                 </div>
                 {movie.cast && movie.cast.length > 0 && (
                   <div className="d-none d-lg-block">

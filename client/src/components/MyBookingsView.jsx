@@ -44,8 +44,8 @@ export const MyBookingsView = ({ onSelectBooking, onBrowseMovies }) => {
   if (loading) {
     return (
       <div className="text-center py-5">
-        <div className="spinner-border text-danger" role="status"></div>
-        <p className="text-white-50 mt-3">Loading your cinema bookings...</p>
+        <div className="spinner-border text-warning" role="status" style={{ width: '3rem', height: '3rem' }}></div>
+        <p className="text-white-50 mt-3 brand-font">Loading your cinema passes...</p>
       </div>
     );
   }
@@ -54,21 +54,24 @@ export const MyBookingsView = ({ onSelectBooking, onBrowseMovies }) => {
     <div className="container py-4">
       <div className="d-flex flex-wrap align-items-center justify-content-between gap-3 mb-4">
         <div>
-          <h2 className="fw-bold text-white mb-1 d-flex align-items-center gap-2">
-            <i className="bi bi-ticket-perforated-fill text-danger"></i> My Reservations
+          <h2 className="fw-bold text-white mb-1 d-flex align-items-center gap-2 brand-font">
+            <span className="p-1 rounded-2 bg-warning bg-opacity-20 text-warning d-inline-flex">
+              <i className="bi bi-ticket-perforated"></i>
+            </span>
+            My Digital Passes & Reservations
           </h2>
           <p className="text-white-50 small mb-0">
-            View your upcoming passes, digital barcodes, and reservation history.
+            View your upcoming premiere passes, digital barcodes, and reservation receipts.
           </p>
         </div>
 
-        <button className="btn btn-outline-light btn-sm" onClick={onBrowseMovies}>
-          <i className="bi bi-plus-circle me-1"></i> Book Another Movie
+        <button className="btn btn-glass btn-sm rounded-pill px-3" onClick={onBrowseMovies}>
+          <i className="bi bi-plus-circle me-1 text-warning"></i> Explore More Movies
         </button>
       </div>
 
       {actionMessage && (
-        <div className="alert alert-success py-2 px-3 small rounded-3 d-flex align-items-center gap-2 mb-4">
+        <div className="alert alert-success py-2 px-3 small rounded-3 d-flex align-items-center gap-2 mb-4 bg-success bg-opacity-20 border-success border-opacity-40 text-success">
           <i className="bi bi-check-circle-fill fs-5"></i>
           <span>{actionMessage}</span>
         </div>
@@ -76,12 +79,12 @@ export const MyBookingsView = ({ onSelectBooking, onBrowseMovies }) => {
 
       {bookings.length === 0 ? (
         <div className="glass-panel text-center py-5 px-4 my-4">
-          <i className="bi bi-film text-secondary display-3 mb-3 d-block"></i>
-          <h4 className="fw-bold text-white mb-2">No Bookings Yet</h4>
+          <i className="bi bi-film text-warning opacity-50 display-3 mb-3 d-block"></i>
+          <h4 className="fw-bold text-white mb-2 brand-font">No Active Passes Found</h4>
           <p className="text-white-50 small mb-4" style={{ maxWidth: 450, margin: '0 auto' }}>
             You haven't reserved any cinema tickets yet. Explore current blockbuster premieres and secure your seats today!
           </p>
-          <button className="btn btn-cinema" onClick={onBrowseMovies}>
+          <button className="btn btn-cinema rounded-pill px-4" onClick={onBrowseMovies}>
             Browse Blockbusters Now
           </button>
         </div>
@@ -98,14 +101,18 @@ export const MyBookingsView = ({ onSelectBooking, onBrowseMovies }) => {
                       <img 
                         src={b.moviePoster} 
                         alt={b.movieTitle} 
-                        className="rounded-3 shadow-sm"
-                        style={{ width: 80, height: 110, objectFit: 'cover' }}
+                        className="rounded-3 shadow-sm border border-secondary border-opacity-25"
+                        style={{ width: 84, height: 114, objectFit: 'cover' }}
                       />
                     )}
                     <div className="flex-grow-1">
                       <div className="d-flex align-items-center justify-content-between gap-2 mb-1">
-                        <h5 className="fw-bold text-white mb-0">{b.movieTitle}</h5>
-                        <span className={`badge ${isCancelled ? 'bg-danger bg-opacity-25 text-danger border border-danger border-opacity-50' : 'bg-success bg-opacity-25 text-success border border-success border-opacity-50'} small`}>
+                        <h5 className="fw-bold text-white mb-0 brand-font">{b.movieTitle}</h5>
+                        <span className={`badge rounded-pill ${
+                          isCancelled 
+                            ? 'bg-danger bg-opacity-25 text-danger border border-danger border-opacity-40' 
+                            : 'bg-success bg-opacity-25 text-success border border-success border-opacity-40'
+                        } small px-3 py-1`}>
                           {b.paymentStatus}
                         </span>
                       </div>
@@ -115,28 +122,28 @@ export const MyBookingsView = ({ onSelectBooking, onBrowseMovies }) => {
                       </div>
 
                       <div className="text-white-50 small mb-2">
-                        <span><i className="bi bi-calendar-event me-1"></i>{b.date}</span>
+                        <span><i className="bi bi-calendar-event me-1 text-warning"></i>{b.date}</span>
                         <span className="mx-2">•</span>
-                        <span><i className="bi bi-clock me-1"></i>{b.time}</span>
+                        <span><i className="bi bi-clock me-1 text-info"></i>{b.time}</span>
                       </div>
 
                       <div className="d-flex flex-wrap gap-2 align-items-center text-white small">
-                        <span>Seats: <strong className="text-info">{b.seats ? b.seats.join(', ') : 'N/A'}</strong></span>
-                        <span className="badge bg-dark border border-secondary border-opacity-50">{b.tier}</span>
+                        <span>Seats: <strong className="text-warning">{b.seats ? b.seats.join(', ') : 'N/A'}</strong></span>
+                        <span className="badge bg-dark border border-secondary border-opacity-35 rounded-pill">{b.tier}</span>
                       </div>
                     </div>
                   </div>
 
-                  <div className="d-flex align-items-center justify-content-between pt-3 mt-3 border-top border-secondary border-opacity-25">
+                  <div className="d-flex align-items-center justify-content-between pt-3 mt-3 border-top border-secondary border-opacity-15">
                     <div>
-                      <span className="text-white-50 small d-block">Booking Code</span>
-                      <span className="text-white font-monospace small fw-semibold">{b.bookingCode}</span>
+                      <span className="text-white-50 small d-block" style={{ fontSize: '0.68rem', letterSpacing: '0.05em' }}>PASS CODE</span>
+                      <span className="text-warning font-monospace small fw-bold">{b.bookingCode}</span>
                     </div>
 
                     <div className="d-flex gap-2">
                       {!isCancelled && (
                         <button
-                          className="btn btn-outline-danger btn-sm"
+                          className="btn btn-outline-danger btn-sm rounded-pill px-3"
                           onClick={() => handleCancelBooking(b._id)}
                           title="Cancel ticket and release seats"
                         >
@@ -145,10 +152,10 @@ export const MyBookingsView = ({ onSelectBooking, onBrowseMovies }) => {
                       )}
 
                       <button
-                        className="btn btn-cinema btn-sm"
+                        className="btn btn-cinema btn-sm rounded-pill px-3"
                         onClick={() => onSelectBooking(b)}
                       >
-                        <i className="bi bi-qr-code-scan me-1"></i> View Ticket
+                        <i className="bi bi-qr-code-scan me-1"></i> View Pass
                       </button>
                     </div>
                   </div>

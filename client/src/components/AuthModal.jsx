@@ -59,14 +59,16 @@ export const AuthModal = ({ onClose }) => {
     <div 
       className="modal fade show d-block" 
       tabIndex="-1" 
-      style={{ backgroundColor: 'rgba(0, 0, 0, 0.85)', backdropFilter: 'blur(8px)', zIndex: 1070 }}
+      style={{ backgroundColor: 'rgba(4, 7, 13, 0.92)', backdropFilter: 'blur(16px)', zIndex: 1070 }}
     >
       <div className="modal-dialog modal-dialog-centered" style={{ maxWidth: 440 }}>
-        <div className="modal-content bg-dark text-white border border-secondary border-opacity-25 rounded-4 shadow-2xl overflow-hidden">
-          <div className="modal-header border-secondary border-opacity-25 py-3 px-4 bg-black bg-opacity-40">
-            <h5 className="modal-title fw-bold d-flex align-items-center gap-2">
-              <i className="bi bi-person-lock text-danger"></i>
-              {isRegister ? 'Create IMovies Account' : 'Sign In to IMovies'}
+        <div className="modal-content bg-dark text-white border border-secondary border-opacity-35 rounded-4 shadow-2xl overflow-hidden">
+          <div className="modal-header border-secondary border-opacity-20 py-3 px-4 bg-black bg-opacity-60">
+            <h5 className="modal-title fw-bold d-flex align-items-center gap-2 brand-font">
+              <span className="p-1 rounded-2 bg-warning bg-opacity-20 text-warning d-inline-flex">
+                <i className="bi bi-person-lock"></i>
+              </span>
+              {isRegister ? 'Create iMovies LUXE Account' : 'Sign In • iMovies LUXE'}
             </h5>
             <button 
               type="button" 
@@ -78,19 +80,21 @@ export const AuthModal = ({ onClose }) => {
 
           <div className="modal-body p-4">
             {/* Quick Demo Logins Banner */}
-            <div className="p-3 bg-black bg-opacity-40 rounded-3 border border-secondary border-opacity-25 mb-4 text-center">
-              <div className="small text-white-50 fw-semibold mb-2">⚡ 1-CLICK DEMO ACCESS (FOR MENTOR / EVALUATOR)</div>
+            <div className="p-3 bg-black bg-opacity-50 rounded-4 border border-secondary border-opacity-20 mb-4 text-center">
+              <div className="small text-warning fw-bold mb-2 brand-font" style={{ letterSpacing: '0.05em' }}>
+                ⚡ 1-CLICK INSTANT DEMO ACCESS
+              </div>
               <div className="d-flex gap-2 justify-content-center">
                 <button
                   type="button"
-                  className="btn btn-sm btn-outline-info flex-grow-1"
+                  className="btn btn-sm btn-glass rounded-pill flex-grow-1"
                   onClick={handleQuickUser}
                 >
-                  <i className="bi bi-person-fill me-1"></i> Demo User
+                  <i className="bi bi-person-fill text-warning me-1"></i> Demo User
                 </button>
                 <button
                   type="button"
-                  className="btn btn-sm btn-outline-warning flex-grow-1"
+                  className="btn btn-sm btn-outline-warning rounded-pill flex-grow-1"
                   onClick={handleQuickAdmin}
                 >
                   <i className="bi bi-shield-lock-fill me-1"></i> Demo Admin
@@ -99,7 +103,7 @@ export const AuthModal = ({ onClose }) => {
             </div>
 
             {error && (
-              <div className="alert alert-danger py-2 px-3 small rounded-3 mb-3">
+              <div className="alert alert-danger py-2 px-3 small rounded-3 mb-3 bg-danger bg-opacity-20 border-danger border-opacity-40 text-danger">
                 {error}
               </div>
             )}
@@ -111,7 +115,7 @@ export const AuthModal = ({ onClose }) => {
                   <input
                     type="text"
                     required
-                    className="form-control bg-black text-white border-secondary border-opacity-50"
+                    className="form-control bg-dark text-white border-secondary border-opacity-40 rounded-3"
                     placeholder="Jane Doe"
                     value={formData.name}
                     onChange={e => setFormData({ ...formData, name: e.target.value })}
@@ -124,7 +128,7 @@ export const AuthModal = ({ onClose }) => {
                 <input
                   type="email"
                   required
-                  className="form-control bg-black text-white border-secondary border-opacity-50"
+                  className="form-control bg-dark text-white border-secondary border-opacity-40 rounded-3"
                   placeholder="name@example.com"
                   value={formData.email}
                   onChange={e => setFormData({ ...formData, email: e.target.value })}
@@ -136,7 +140,7 @@ export const AuthModal = ({ onClose }) => {
                 <input
                   type="password"
                   required
-                  className="form-control bg-black text-white border-secondary border-opacity-50"
+                  className="form-control bg-dark text-white border-secondary border-opacity-40 rounded-3"
                   placeholder="••••••••"
                   value={formData.password}
                   onChange={e => setFormData({ ...formData, password: e.target.value })}
@@ -148,7 +152,7 @@ export const AuthModal = ({ onClose }) => {
                   <label className="text-secondary small fw-semibold">Phone (Optional)</label>
                   <input
                     type="tel"
-                    className="form-control bg-black text-white border-secondary border-opacity-50"
+                    className="form-control bg-dark text-white border-secondary border-opacity-40 rounded-3"
                     placeholder="+1 555-0100"
                     value={formData.phone}
                     onChange={e => setFormData({ ...formData, phone: e.target.value })}
@@ -158,11 +162,11 @@ export const AuthModal = ({ onClose }) => {
 
               <button
                 type="submit"
-                className="btn btn-cinema w-100 py-2 mt-2"
+                className="btn btn-cinema w-100 py-2 mt-2 rounded-pill"
                 disabled={loading}
               >
                 {loading ? (
-                  <span className="spinner-border spinner-border-sm me-2" role="status"></span>
+                  <span className="spinner-border spinner-border-sm me-2 text-dark" role="status"></span>
                 ) : null}
                 {isRegister ? 'Create Account' : 'Sign In'}
               </button>
@@ -174,7 +178,7 @@ export const AuthModal = ({ onClose }) => {
                   Already have an account?{' '}
                   <button 
                     type="button" 
-                    className="btn btn-link text-danger p-0 small text-decoration-none"
+                    className="btn btn-link text-warning p-0 small text-decoration-none fw-semibold"
                     onClick={() => setIsRegister(false)}
                   >
                     Sign In
@@ -185,7 +189,7 @@ export const AuthModal = ({ onClose }) => {
                   Don't have an account?{' '}
                   <button 
                     type="button" 
-                    className="btn btn-link text-danger p-0 small text-decoration-none"
+                    className="btn btn-link text-warning p-0 small text-decoration-none fw-semibold"
                     onClick={() => setIsRegister(true)}
                   >
                     Register
