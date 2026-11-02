@@ -1,0 +1,24 @@
+{
+  "name": "imovies",
+  "version": "1.0.0",
+  "description": "IMovies - Movie ticket booking made simple. Full-stack cinema reservation platform.",
+  "scripts": {
+    "build": "npm install --prefix server && npm install --prefix client && npm run build --prefix client",
+    "start": "node server/src/server.js",
+    "start:server": "npm --prefix server start",
+    "start:client": "npm --prefix client run dev",
+    "test:server": "npm --prefix server test",
+    "build:client": "npm --prefix client run build"
+  },
+  "keywords": [
+    "movie-booking",
+    "cinema",
+    "express",
+    "mongodb",
+    "react",
+    "bootstrap",
+    "jwt"
+  ],
+  "author": "IMovies Team",
+  "license": "MIT"
+}
